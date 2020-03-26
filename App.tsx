@@ -1,16 +1,8 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 import styles from './src/styles';
 import {
-  BASE_WHITE_COLOR,
   BASE_BLACK_COLOR,
-  SECONDARY_DARK_RED,
-  SECOND_ORANGE_COLOR,
-  RATING_STAR_COLOR,
-  GREEN_DARK,
-  MAIN_LIGHT_BLUE,
-  MAIN_DARK_BLUE,
-  MAIN_PURPLE_COLOR,
 } from './src/constants/colors';
 import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
@@ -285,8 +277,6 @@ const App = () => {
               setIsLine(false);
               setIsShape(true);
               closePopups();
-              setIsBottom(true);
-              setIsDisable(true);
             }}>
             <Text>Текст</Text>
           </TouchableOpacity>
