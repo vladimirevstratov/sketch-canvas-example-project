@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "react": "16.9.0",
-    "react-native": "0.61.5"
+    "react-native": "git+https://git@github.com/Razzaru/react-native.git#0.61-stable",
+    "@dudigital/react-native-zoomable-view": "git+https://git@github.com/Razzaru/react-native-zoomable-view.git#master",
+    "@terrylinla/react-native-sketch-canvas": "git+https://git@github.com/Razzaru/react-native-sketch-canvas.git#master",
+    "react-native-extended-stylesheet": "^0.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
