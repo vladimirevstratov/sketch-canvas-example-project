@@ -1,9 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 import styles from './src/styles';
-import {
-  BASE_BLACK_COLOR,
-} from './src/constants/colors';
+import {BASE_BLACK_COLOR} from './src/constants/colors';
 import {SketchCanvas} from '@terrylinla/react-native-sketch-canvas';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 
@@ -58,6 +56,7 @@ const App = () => {
     lastX: 0,
     lastY: 0,
   });
+  console.log('Zoom', zoomState.zoomLevel);
   const [distanceState, setDistanceState] = useState({
     distanceLeft: 0,
     distanceRight: 0,
@@ -238,6 +237,10 @@ const App = () => {
               setIsLine(false);
               setIsShape(false);
               closePopups();
+              changeDrawStyle({
+                ...drawStyle,
+                color: BASE_BLACK_COLOR,
+              });
             }}>
             <Text>Ручка</Text>
           </TouchableOpacity>
@@ -303,6 +306,10 @@ const App = () => {
               toggle(toolPosition.pen, false);
               setIsLine(false);
               setPrevVisible(TOOL_TYPE.color);
+              changeDrawStyle({
+                ...drawStyle,
+                color: 'red',
+              });
             }}>
             <Text>Цвет</Text>
           </TouchableOpacity>
@@ -333,6 +340,7 @@ const App = () => {
                   ...activeStyle(toolPosition.circle, true),
                 }}
                 onPress={() => {
+                  pathRef.current.unselectShape();
                   pathRef.current.addShape({shapeType: 'Circle'});
                   toggle(toolPosition.circle, true);
                   changeDrawStyle({
@@ -353,6 +361,7 @@ const App = () => {
                   ...activeStyle(toolPosition.rectangle, true),
                 }}
                 onPress={() => {
+                  pathRef.current.unselectShape();
                   pathRef.current.addShape({shapeType: 'Rect'});
                   toggle(toolPosition.rectangle, true);
                   changeDrawStyle({
@@ -373,6 +382,7 @@ const App = () => {
                   ...activeStyle(toolPosition.triangle, true),
                 }}
                 onPress={() => {
+                  pathRef.current.unselectShape();
                   pathRef.current.addShape({shapeType: 'Triangle'});
                   toggle(toolPosition.triangle, true);
                   changeDrawStyle({
@@ -393,6 +403,7 @@ const App = () => {
                   ...activeStyle(toolPosition.square, true),
                 }}
                 onPress={() => {
+                  pathRef.current.unselectShape();
                   pathRef.current.addShape({shapeType: 'Square'});
                   toggle(toolPosition.square, true);
                   changeDrawStyle({
@@ -413,6 +424,7 @@ const App = () => {
                   ...activeStyle(toolPosition.tap, true),
                 }}
                 onPress={() => {
+                  pathRef.current.unselectShape();
                   pathRef.current.addShape({shapeType: 'Tap'});
                   toggle(toolPosition.tap, true);
                   changeDrawStyle({
