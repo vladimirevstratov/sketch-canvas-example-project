@@ -40,7 +40,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: scale(52),
-    height: scale(400),
+    height: scale(470),
     marginLeft: scale(8),
     marginTop: scale(15),
     paddingVertical: scale(10),

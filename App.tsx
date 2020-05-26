@@ -68,6 +68,9 @@ const App = () => {
 
   const pathRef: CanvasRef = useRef();
 
+  const saveDirectory = 'Бригада/Проекты';
+  const tempFileName = 'nam124564576567';
+
   const TOOL_TYPE = {
     color: 'color',
     line: 'line',
@@ -330,6 +333,22 @@ const App = () => {
             }}>
             <Text>Назад</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => {
+              pathRef.current.save(
+                'png',
+                false,
+                saveDirectory,
+                tempFileName,
+                true,
+                true,
+                false,
+              );
+              console.log('Должно сохраниться');
+            }}>
+            <Text>Сохранить</Text>
+          </TouchableOpacity>
         </View>
         {isVisible.shape && (
           <View style={styles.shapeContainer}>
@@ -533,6 +552,13 @@ const App = () => {
               shapeConfiguration={{
                 shapeStrokeWidth:
                   drawStyle.thickness > 1 ? drawStyle.thickness : 1,
+              }}
+              onSketchSaved={(success, filePath) => {
+                if (success) {
+                  console.log('Сохранено');
+                } else {
+                  console.log('Не сохранено');
+                }
               }}
             />
           </ReactNativeZoomableView>
