@@ -355,7 +355,7 @@ const App = () => {
               style={styles.icon}
               onPress={() => {
                 if (isShapeSelected) {
-                  pathRef.current.deleteSelectedShape();
+                  pathRef.current.deleteSelectedShape(false);
                   closePopups();
                 }
               }}>
