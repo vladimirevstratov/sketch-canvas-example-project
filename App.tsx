@@ -65,6 +65,7 @@ const App = () => {
   });
   const [isLine, setIsLine] = useState(false);
   const [isDisable, setIsDisable] = useState(false);
+  const [isShapeSelected, setIsShapeSelected] = useState(false);
 
   const pathRef: CanvasRef = useRef();
 
@@ -217,7 +218,7 @@ const App = () => {
       <View
         style={styles.container}
         pointerEvents={isDisable ? 'none' : 'auto'}>
-        <View style={styles.buttonsContainer}>
+        <View style={[styles.buttonsContainer, isShapeSelected ? styles.additionalHeight : null]}>
           <TouchableOpacity
             style={{
               ...styles.icon,
@@ -349,6 +350,18 @@ const App = () => {
             }}>
             <Text>Сохранить</Text>
           </TouchableOpacity>
+          {isShapeSelected ? (
+            <TouchableOpacity
+              style={styles.icon}
+              onPress={() => {
+                if (isShapeSelected) {
+                  pathRef.current.deleteSelectedShape();
+                  closePopups();
+                }
+              }}>
+              <Text>Удалить</Text>
+            </TouchableOpacity>
+          ) : null}
         </View>
         {isVisible.shape && (
           <View style={styles.shapeContainer}>
@@ -558,6 +571,13 @@ const App = () => {
                   console.log('Сохранено');
                 } else {
                   console.log('Не сохранено');
+                }
+              }}
+              onShapeSelectionChanged={isShapeSelected => {
+                if (isShapeSelected) {
+                  setIsShapeSelected(true);
+                } else {
+                  setIsShapeSelected(false);
                 }
               }}
             />

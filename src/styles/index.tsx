@@ -40,7 +40,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: scale(52),
-    height: scale(470),
+    height: scale(510),
     marginLeft: scale(8),
     marginTop: scale(15),
     paddingVertical: scale(10),
@@ -48,6 +48,9 @@ export default StyleSheet.create({
     borderRadius: scale(4),
     zIndex: 1,
     elevation: 2,
+  },
+  additionalHeight: {
+    height: scale(560),
   },
   canvas: {
     position: 'absolute',
