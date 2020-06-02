@@ -218,7 +218,11 @@ const App = () => {
       <View
         style={styles.container}
         pointerEvents={isDisable ? 'none' : 'auto'}>
-        <View style={[styles.buttonsContainer, isShapeSelected ? styles.additionalHeight : null]}>
+        <View
+          style={[
+            styles.buttonsContainer,
+            isShapeSelected ? styles.additionalHeight : null,
+          ]}>
           <TouchableOpacity
             style={{
               ...styles.icon,
